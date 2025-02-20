@@ -12,6 +12,7 @@ class ChatGPTService(BaseService):
         self.client = OpenAI(api_key=api_key, )
 
     def _call_api(self, text: str) -> dict:
+        print(text)
         """
         Calls OpenAI model to extract CV details.
         Reference: https://platform.openai.com/docs/api-reference/introduction

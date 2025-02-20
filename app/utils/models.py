@@ -12,3 +12,4 @@ class ModelType(str, Enum):
     QWEN_14B="qwen:14b"
     GEMINI = "gemini"
     OLLAMA = "ollama"
+    CLAUDE = "claude"

@@ -3,6 +3,7 @@ from typing import List
 from app.config import settings
 from app.models.cv_model import CVModel
 from app.services.cv_processor_services.chatgpt_service import ChatGPTService
+from app.services.cv_processor_services.claude_service import ClaudeService
 from app.services.cv_processor_services.deepseek_service import DeepSeekService
 from app.services.cv_processor_services.gemini_service import GeminiService
 from app.services.cv_processor_services.ollama_service import OllamaService
@@ -23,6 +24,7 @@ class CVProcessor:
             ModelType.QWEN_14B: OllamaService(model=ModelType.QWEN_14B),
             ModelType.GEMINI: GeminiService(model=settings.gemini_model),
             ModelType.OLLAMA: OllamaService(model=settings.ollama_model),
+            ModelType.CLAUDE: ClaudeService(model=settings.anthropic_model, api_key=settings.anthropic_api_key),
         }
         service = service_map.get(model_type)
 

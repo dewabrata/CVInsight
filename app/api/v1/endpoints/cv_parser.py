@@ -4,6 +4,9 @@ import traceback
 
 from fastapi import APIRouter, File, UploadFile, HTTPException, Query
 
+# Define temp directory relative to project root
+TEMP_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))), "temp")
+
 from app.models.cv_model import CVModel
 from app.services.cv_processor import CVProcessor
 from app.services.pdf_parser import PDFParser
@@ -19,7 +22,8 @@ async def parse_cv(file: UploadFile = File(...),
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="File must be a PDF")
 
-    file_path = f"/tmp/{file.filename}"
+    os.makedirs(TEMP_DIR, exist_ok=True)  # Ensure temp directory exists
+    file_path = os.path.join(TEMP_DIR, file.filename)
     try:
         with open(file_path, "wb") as buffer:
             buffer.write(file.file.read())

@@ -6,12 +6,11 @@ import requests
 import streamlit as st
 
 st.set_page_config(
-    page_title="CVInsight - AI CV Parser",
+    page_title="JuaraCoding - AI CV Parser",
     page_icon=":shark:",
     menu_items={
-        'Get Help': "mailto:hasnat.abdullah@cefalo.com",
-        'Report a bug': "https://github.com/hasnat-cefalo/CVInsight/issues",
-        'About': "# Made with ❤️ by Hasnat. Copyright 2025 Cefalo. All rights reserved."
+        'Get Help': "mailto:dewabrata@gmail.com",
+        'About': "# Dewabrata. JuaraCoding. All rights reserved."
     }
 )
 
@@ -22,7 +21,8 @@ model_options = {
     "DeepSeek (API)": "deepseek-api",
     "Gemini (Google)": "gemini",
     "ChatGPT (OpenAI)": "chatgpt",
-    "Ollama (Local: custom)": "ollama"
+    "Ollama (Local: custom)": "ollama",
+    "Claude (Antrhopic)": "claude"
 
 }
 
@@ -51,8 +51,8 @@ def format_date(date_str):
 
 
 def main():
-    st.title("CVInsight - AI CV Parser")
-    st.write("Upload a PDF CV and extract structured information using AI.")
+    st.title("JuaraCoding - AI CV Parser")
+    st.write("PDF Extractor menggunakan LLM AI.")
     st.write("")
     # File uploader
     uploaded_file = st.file_uploader("Upload a CV (.pdf)", type="pdf", help="Only PDF files are supported.")
